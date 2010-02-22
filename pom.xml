@@ -67,12 +67,12 @@
 	<repository>
 		<uniqueVersion>false</uniqueVersion>
 		<id>extfree</id>
-		<url>https://www.pyxis-tech.ca/nexus/content</url>
+		<url>http://www.pyxis-tech.ca/nexus/content/repositories</url>
 	</repository>
 	<snapshotRepository>
 		<uniqueVersion>true</uniqueVersion>
 		<id>extfree</id>
-		<url>https://www.pyxis-tech.ca/nexus/content</url>
+		<url>http://www.pyxis-tech.ca/nexus/content/repositories</url>
 	</snapshotRepository>
   </distributionManagement>
   <scm>
