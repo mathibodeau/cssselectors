@@ -65,16 +65,16 @@
     </dependency>
   </dependencies>
   <distributionManagement>
-    <repository>
-      <uniqueVersion>false</uniqueVersion>
-      <id>3levers-googlecode-releases</id>
-      <url></url>
-    </repository>
-    <snapshotRepository>
-      <uniqueVersion>true</uniqueVersion>
-      <id>3levers-googlecode-snapshots</id>
-      <url></url>
-    </snapshotRepository>
+	<repository>
+		<uniqueVersion>false</uniqueVersion>
+		<id>extfree</id>
+		<url>https://www.pyxis-tech.ca/nexus/content</url>
+	</repository>
+	<snapshotRepository>
+		<uniqueVersion>true</uniqueVersion>
+		<id>extfree</id>
+		<url>https://www.pyxis-tech.ca/nexus/content</url>
+	</snapshotRepository>
   </distributionManagement>
   <scm>
     <connection>scm:git:git://github.com/mathibodeau/cssselectors.git</connection>
