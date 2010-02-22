@@ -77,7 +77,7 @@
     </snapshotRepository>
   </distributionManagement>
   <scm>
-    <connection>scm:git:git://github.com/rwallace/cssselectors.git</connection>
+    <connection>scm:git:git://github.com/mathibodeau/cssselectors.git</connection>
     <url>scm:git:git://github.com/mathibodeau/cssselectors.git</url>
   </scm>
 </project>
