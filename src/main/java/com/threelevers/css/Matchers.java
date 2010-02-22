@@ -6,22 +6,22 @@ import org.hamcrest.TypeSafeDiagnosingMatcher;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-final class Matchers {
+public final class Matchers {
     private Matchers() {}
     
-    static Matcher<CssSelector> matches(final Element element) {
+    public static Matcher<CssSelector> matches(final Element element) {
         return new Matches(element);
     }
     
-    static Matcher<CssSelector> matchesAll(final Element... elements) {
+    public static Matcher<CssSelector> matchesAll(final Element... elements) {
         return new MatchesAll(elements);
     }
     
-    static From<Element[]> elements(String... elementIds) {
+    public static From<Element[]> elements(String... elementIds) {
         return new ElementsFrom(elementIds);
     }
     
-    static From<Element> element(String elementId) {
+    public static From<Element> element(String elementId) {
         return new ElementFrom(elementId);
     }
 
@@ -69,7 +69,7 @@ final class Matchers {
         }
     }
     
-    interface From<T> {
+    public interface From<T> {
         T from(Document doc);
     }
     

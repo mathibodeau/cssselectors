@@ -25,10 +25,10 @@ import org.w3c.dom.Element;
 import com.google.common.collect.ImmutableList;
 import static com.google.common.collect.Iterables.*;
 
-final class CssSelectors {
+public final class CssSelectors {
     private CssSelectors() {}
     
-    static GroupingSelector selectors(String selectors) {
+    public static GroupingSelector selectors(String selectors) {
         checkNotNull(selectors);
         
         CssSelectorsLexer lex = new CssSelectorsLexer(new ANTLRStringStream(selectors));
@@ -42,130 +42,130 @@ final class CssSelectors {
         }
     }
     
-    static GroupingSelector selectors(CombinableSelector selector) {
+    public static GroupingSelector selectors(CombinableSelector selector) {
         checkNotNull(selector);
         return new GroupingSelectorImpl(selector);
     }
     
-    static CombinableSelector selector(SimpleSelector selector) {
+    public static CombinableSelector selector(SimpleSelector selector) {
         checkNotNull(selector, "selector");
         return new CombinableSelectorImpl(selector);
     }
         
-    static TypeSelector tag(String tagName) {
+    public static TypeSelector tag(String tagName) {
         checkNotBlank(tagName);
         return new TypSelectorImpl(tagName);
     }
         
-    static TypeSelector any() {
+    public static TypeSelector any() {
         return any;
     }
 
-    static ElementSelector id(String id) {
+    public static ElementSelector id(String id) {
         checkNotBlank(id);
         return new IdSelector(id);
     }
 
-    static ElementSelector cssClass(String className) {
+    public static ElementSelector cssClass(String className) {
         checkNotBlank(className);
         return new ClassSelector(className);
     }
     
-    static AttributeSelector attrib(String attribName) {
+    public static AttributeSelector attrib(String attribName) {
         checkNotBlank(attribName);
         return new HasAttributeSelectorImpl(attribName);
     }
     
-    static ElementSelector not(ElementSelector selector) {
+    public static ElementSelector not(ElementSelector selector) {
         checkNotNull(selector);
         return new NotPseudoSelector(selector);
     }
     
-    static ElementSelector nthChild(int a) {
+    public static ElementSelector nthChild(int a) {
         return nthChild(a, 0);
     }
     
-    static ElementSelector nthChild(int a, int b) {
+    public static ElementSelector nthChild(int a, int b) {
         return nthChild(new NthExpression(a, b));
     }
     
-    static ElementSelector nthChild(NthExpression expr) {
+    public static ElementSelector nthChild(NthExpression expr) {
         return new NthChildPseudoSelector(expr);
     }
     
-    static ElementSelector nthLastChild(int a) {
+    public static ElementSelector nthLastChild(int a) {
         return nthLastChild(a, 0);
     }
     
-    static ElementSelector nthLastChild(int a, int b) {
+    public static ElementSelector nthLastChild(int a, int b) {
         return nthLastChild(new NthExpression(a, b));
     }
     
-    static ElementSelector nthLastChild(NthExpression expr) {
+    public static ElementSelector nthLastChild(NthExpression expr) {
         return new NthLastChildPseudoSelector(expr);
     }
     
-    static ElementSelector firstChild() {
+    public static ElementSelector firstChild() {
         return firstChild;
     }
     
-    static ElementSelector lastChild() {
+    public static ElementSelector lastChild() {
         return lastChild;
     }
     
-    static ElementSelector onlyChild() {
+    public static ElementSelector onlyChild() {
         return onlyChild;
     }
     
-    static ElementSelector nthOfType(int a, int b) {
+    public static ElementSelector nthOfType(int a, int b) {
         return nthOfType(new NthExpression(a, b));
     }
     
-    static ElementSelector nthOfType(NthExpression expr) {
+    public static ElementSelector nthOfType(NthExpression expr) {
         return new NthOfTypePseudoSelector(expr);
     }
 
-    static ElementSelector nthLastOfType(int a, int b) {
+    public static ElementSelector nthLastOfType(int a, int b) {
         return nthLastOfType(new NthExpression(a, b));
     }
     
-    static ElementSelector nthLastOfType(NthExpression expr) {
+    public static ElementSelector nthLastOfType(NthExpression expr) {
         return new NthLastOfPseudoSelector(expr);
     }
     
-    static ElementSelector firstOfType() {
+    public static ElementSelector firstOfType() {
         return firstOfType;
     }
     
-    static ElementSelector lastOfType() {
+    public static ElementSelector lastOfType() {
         return lastOfType;
     }
     
-    static ElementSelector onlyOfType() {
+    public static ElementSelector onlyOfType() {
         return onlyOfType;
     }
     
-    static ElementSelector empty() {
+    public static ElementSelector empty() {
         return empty;
     }
     
-    static ElementSelector enabled() {
+    public static ElementSelector enabled() {
         return enabled;
     }
     
-    static ElementSelector disabled() {
+    public static ElementSelector disabled() {
         return disabled;
     }
     
-    static ElementSelector checked() {
+    public static ElementSelector checked() {
         return checked;
     }
     
-    static ElementSelector selected() {
+    public static ElementSelector selected() {
         return selected;
     }
     
-    interface GroupingSelector extends CssSelector {
+    public interface GroupingSelector extends CssSelector {
         /**
          * Combines CssSelectorMatchers together to allow for grouping selectors the same as "h1, h2, h3".
          *  
@@ -214,7 +214,7 @@ final class CssSelectors {
         }
     }
 
-    interface CombinableSelector extends CssSelector {
+    public interface CombinableSelector extends CssSelector {
         /**
          * Equivalent to using the CSS descendant combinator ".someclass .otherclass".
          * 
@@ -289,7 +289,7 @@ final class CssSelectors {
         }
     }
     
-    interface CombinatorSelector extends CssSelector {}
+    public interface CombinatorSelector extends CssSelector {}
     
     private static class NoCombinatorSelectorImpl implements CombinatorSelector {
         private final SimpleSelector selector;
@@ -328,7 +328,7 @@ final class CssSelectors {
         }
     }
     
-    interface ElementSelector extends SimpleSelector {}
+    public interface ElementSelector extends SimpleSelector {}
 
     private static abstract class AbstractElementSelector implements ElementSelector {
         public SimpleSelector and(ElementSelector selector) {
@@ -337,7 +337,7 @@ final class CssSelectors {
         }
     }
 
-    interface SimpleSelector extends CssSelector {
+    public interface SimpleSelector extends CssSelector {
         /**
          * Allows you to combine multiple selectors as in ".someclass.otherclass"
          * 
@@ -382,7 +382,7 @@ final class CssSelectors {
         }
     }
     
-    interface TypeSelector extends ElementSelector {}
+    public interface TypeSelector extends ElementSelector {}
     
     private static class TypSelectorImpl extends AbstractElementSelector implements TypeSelector {
         private final String tagName;
@@ -445,7 +445,7 @@ final class CssSelectors {
         }
     }
     
-    interface AttributeSelector extends ElementSelector {
+    public interface AttributeSelector extends ElementSelector {
 
         /**
          * The returned selector will check if this attribute is equal to a string value.
