@@ -67,14 +67,15 @@
   <distributionManagement>
 	<repository>
 		<uniqueVersion>false</uniqueVersion>
-		<id>extfree</id>
-		<url>https://www.pyxis-tech.ca/nexus/content</url>
+		<id>${pyxis.distributionManagement.repository.id}</id>
+		<url>${pyxis.distributionManagement.repository.url}</url>
 	</repository>
 	<snapshotRepository>
-		<uniqueVersion>true</uniqueVersion>
-		<id>extfree</id>
-		<url>https://www.pyxis-tech.ca/nexus/content</url>
+		<uniqueVersion>false</uniqueVersion>
+		<id>${pyxis.snapshot.distributionManagement.repository.id}</id>
+		<url>${pyxis.snapshot.distributionManagement.repository.url}</url>
 	</snapshotRepository>
+	<downloadUrl>${pyxis.distributionManagement.downloadUrl}</downloadUrl>
   </distributionManagement>
   <scm>
     <connection>scm:git:git://github.com/mathibodeau/cssselectors.git</connection>
