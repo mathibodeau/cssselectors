@@ -19,7 +19,7 @@ import com.google.common.base.Function;
 public final class Elements {
     private Elements() {}
 
-    static Element first(Element element) {
+    public static Element first(Element element) {
         return first(element, any());
     }
     
@@ -33,7 +33,7 @@ public final class Elements {
         return (Element) first;
     }
     
-    static Element last(Element element) {
+    public static Element last(Element element) {
         return last(element, any());
     }
     
@@ -47,7 +47,7 @@ public final class Elements {
         return (Element) last;
     }
     
-    static Element previous(Element element) {
+    public static Element previous(Element element) {
         checkNotNull(element, "element");
         Node previous = element.getPreviousSibling();
         while (previous != null && !Nodes.isElement(previous)) {
@@ -56,7 +56,7 @@ public final class Elements {
         return (Element) previous;
     }
     
-    static Element next(Element element) {
+    public static Element next(Element element) {
         return next(element, any());
     }
     
@@ -70,7 +70,7 @@ public final class Elements {
         return (Element) next;
     }
     
-    static Element parent(Element element) {
+    public static Element parent(Element element) {
         checkNotNull(element, "element");
         if (element.getParentNode() == null || !isElement(element.getParentNode())) {
             return null;
@@ -78,12 +78,12 @@ public final class Elements {
         return (Element) element.getParentNode();
     }
     
-    static Iterable<Element> children(Element element) {
+    public static Iterable<Element> children(Element element) {
         checkNotNull(element, "element");
         return transform(filter(asIterable(element.getChildNodes()), isElement), Elements.<Node, Element>to(Element.class));
     }
 
-    static int indexOf(Element element) {
+    public static int indexOf(Element element) {
         checkNotNull(element, "element");
         if (element.getParentNode() == null || !isElement(element.getParentNode())) {
             return 0;
@@ -97,7 +97,7 @@ public final class Elements {
         return index;
     }
     
-    static Iterable<Element> nextAll(Element element) {
+    public static Iterable<Element> nextAll(Element element) {
         return nextAll(element, any());
     }
 
